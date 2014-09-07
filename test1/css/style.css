@@ -1,0 +1,14 @@
+body {
+  overflow: hidden;
+  background: black;
+}
+
+.text {
+  position:absolute;
+  top: 1000px;
+  opacity: 0;
+  color: white;
+  text-align: center;
+}
+
+

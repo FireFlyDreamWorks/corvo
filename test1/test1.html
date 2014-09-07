@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/web-animations.js"></script>
+  <script src="js/buffer-loader.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body>
+<div class="text">Una volta in una fosca mezzanotte, mentre io meditavo, debole e stanco, sopra alcuni bizzarri e strani volumi d'una scienza dimenticata; mentre io chinavo la testa, quasi sonnecchiando - d'un tratto, sentii un colpo leggero, come di qualcuno che leggermente picchiasse - pichiasse alla porta della mia camera. «È qualche visitatore - mormorai - che batte alla porta della mia camera.» Questo soltanto, e nulla più.</div>
+
+<script>
+  window.onload = init;
+  var elem = document.querySelector('.text');
+  var context,
+      bufferLoader;
+
+  function init() {
+    // Fix up prefixing
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    context = new AudioContext();
+
+    bufferLoader = new BufferLoader(
+        context,
+        [
+        'music/voice01.ogg',
+        'music/Poe_take01.ogg'
+        ],
+        finishedLoading
+        );
+
+    bufferLoader.load();
+  }
+
+  function animateText() {
+    elem.animate([
+        {offset: 0, top: "100%", opacity: 0},
+        {offset: 0.2, top: "80%", opacity: 1},
+        {offset: 0.8, top: "20%", opacity: 1},
+        {offset: 1, top: "0%", opacity: 0}
+        ], 35000);
+  }
+
+  function finishedLoading(bufferList) {
+    // Create two sources and play them both together.
+    var source1 = context.createBufferSource();
+    var source2 = context.createBufferSource();
+    source1.buffer = bufferList[0];
+    source2.buffer = bufferList[1];
+
+    source1.connect(context.destination);
+    source2.connect(context.destination);
+    source2.start(0);
+
+    window.setTimeout(function () {
+        source1.start(0);
+        animateText();
+    }, 5000);
+  }
+
+
+  // var player = document.timeline.play(new AnimationGroup([
+  //       new Animation(elem, [
+  //         {top: "1000px"},
+  //         {top: "-30px"} 
+  //         ],
+  //         {
+  //           duration: 20000, iterations: Infinity
+  //         }),
+  //         new Animation(elem, [
+  //         {opacity: 0},
+  //         {opacity: 1}
+  //         ],
+  //         {
+  //           duration: 2000, iterations: Infinity
+  //         })]));
+</script>
+</body>
+</html>

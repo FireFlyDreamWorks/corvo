@@ -1,0 +1,50 @@
+body {
+  background-image: url('../images/study.jpg');
+  background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+
+.flashlight .top,
+.flashlight .left,
+.flashlight .right,
+.flashlight .bottom {
+    background: black;
+    height: 1000px;
+    width: 5000px;
+    pointer-events: none;
+    position: absolute;
+        z-index: 50;
+    opacity: 0.9;
+}
+
+.flashlight .left,
+.flashlight .right {
+    height: 200px;
+}
+
+.flashlight .center {
+     background-image: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, color-stop(25%, rgba(0, 0, 0, 0)), color-stop(100%, #000000)); 
+    background-image: -webkit-radial-gradient(center center, closest-side circle, rgba(0, 0, 0, 0) 25%, #000000 100%);
+    background: radial-gradient(closest-side circle at center center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 25%,rgba(0,0,0,1) 100%);
+    background-image: -moz-radial-gradient(center center, closest-side circle, rgba(0, 0, 0, 0) 25%, #000000 100%);
+    background-image: -ms-radial-gradient(center center, closest-side circle, rgba(0, 0, 0, 0) 25%, #000000 100%);
+    background-image: -o-radial-gradient(center center, closest-side circle, rgba(0, 0, 0, 0) 25%, #000000 100%);
+    width: 200px;
+    height: 200px;
+    position: absolute;
+pointer-events: none;
+    z-index: 50;
+    opacity: 0.9;
+}
+
+.sheet {
+  background-image: url('../images/book.png');
+  background-size: cover;
+    position: absolute;
+    left: 840px;
+    top: 445px;
+  width: 134px;
+  height: 70px;
+    z-index: 10;
+}
