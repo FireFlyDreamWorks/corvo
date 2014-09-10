@@ -3,23 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
-  <script src="js/jquery-2.1.1.min.js"></script>
-  <script src="js/buffer-loader.js"></script>
-  <script type="text/javascript" src="js/jquery.balloon.js"></script> 
-
+  <link rel="stylesheet" type="text/css" href="css/transition/default.css"/>
+  <link rel="stylesheet" type="text/css" href="css/transition/component.css"/>
+  <link rel="stylesheet" type="text/css" href="css/transition/animations.css"/>
+  <link rel="stylesheet" type="text/css" href="css/transition/multilevelmenu.css"/>
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+  <script src="js/modernizr.custom.js"></script> 
+
+
 </head>
 <body>
 
+	<div class="pt-triggers">
+		<button id="iterateEffects" class="pt-touch-button">Show next page</button>
+	</div>
+
+	<div id="pt-main" class="pt-perspective">
+		<div class="pt-page pt-page-1">
+			<h1><span>The Raven</h1>
+		</div>
+		<div class="pt-page pt-page-2">
+			 <div class="flashlight">
+			     <div class="top"></div>
+			     <div class="left"></div>
+			     <div class="center"></div>
+			     <div class="right"></div>
+			     <div class="bottom"></div>
+			 </div>
+			 <div class="sheet"></div>
+		</div>
+	</div>
+
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/buffer-loader.js"></script>
+  <script src="js/jquery.balloon.js"></script> 
+  <script src="js/jquery.balloon.js"></script> 
+  <script src="js/jquery.dlmenu.js"></script> 
+  <script src="js/pagetransitions.js"></script> 
     
- <div class="flashlight">
-     <div class="top"></div>
-     <div class="left"></div>
-     <div class="center"></div>
-     <div class="right"></div>
-     <div class="bottom"></div>
- </div>
- <div class="sheet"></div>
 <script>
   var context,
       bufferLoader;
