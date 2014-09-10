@@ -78,10 +78,13 @@ html, body { height: 100%; }
 }
 
 .pt-page-2 {
+	background: #fd6a62;
+  background-image: url('../../images/study.jpg');
 }
 
 .pt-page-3 {
-	background: #60d7a9;
+	background: #fdc162;
+  background-image: url('../../images/foresta.jpg');
 }
 
 .pt-page-4 {
