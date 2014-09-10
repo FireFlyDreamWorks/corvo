@@ -5,6 +5,8 @@
   <title></title>
   <script src="js/jquery-2.1.1.min.js"></script>
   <script src="js/buffer-loader.js"></script>
+  <script type="text/javascript" src="js/jquery.balloon.js"></script> 
+
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
@@ -56,6 +58,9 @@
   }
 
   $(".sheet").click(init);
+  $(".sheet").balloon({
+  contents: '<a href="#">The Book!</a>'
+   });
 
 </script>
  <script>
