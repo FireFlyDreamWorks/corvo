@@ -27,12 +27,12 @@ body {
 }
 
 a {
-	color: #ddd;
+	color: #00d;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #fff;
+	color: #0d0;
 }
 
 /* Header Style */
