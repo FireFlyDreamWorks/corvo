@@ -2,8 +2,8 @@ var PageTransitions = (function() {
 
 	var $main = $( '#pt-main' ),
 		$pages = $main.children( 'div.pt-page' ),
-		$iterate = $( '#iterateEffects' ),
-		animcursor = 1,
+		$iterate = $( '.trigger' ),
+		animcursor = 2,
 		pagesCount = $pages.length,
 		current = 0,
 		isAnimating = false,
@@ -25,17 +25,11 @@ var PageTransitions = (function() {
 		$pages.each( function() {
 			var $page = $( this );
 			$page.data( 'originalClassList', $page.attr( 'class' ) );
+			console.log($page.attr( 'class' ) );
 		} );
 
 		$pages.eq( current ).addClass( 'pt-page-current' );
 
-		$( '#dl-menu' ).dlmenu( {
-			animationClasses : { in : 'dl-animate-in-2', out : 'dl-animate-out-2' },
-			onLinkClick : function( el, ev ) {
-				ev.preventDefault();
-				nextPage( el.data( 'animation' ) );
-			}
-		} );
 
 		$iterate.on( 'click', function() {
 			if( isAnimating ) {
@@ -44,7 +38,12 @@ var PageTransitions = (function() {
 			if( animcursor > 67 ) {
 				animcursor = 1;
 			}
-			nextPage( animcursor );
+			var options=new Object();
+			var nextP=($(this).data("next"))? $(this).data("next"):animcursor;
+			options.animation=23;
+			options.showPage=nextP-1;
+			console.log('nextPage='+nextP);
+			nextPage( options );
 			++animcursor;
 		} );
 

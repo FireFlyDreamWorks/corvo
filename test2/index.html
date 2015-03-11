@@ -16,7 +16,7 @@
 <body>
 
 	<div class="pt-triggers">
-		<button id="iterateEffects" class="pt-touch-button">Show next page</button>
+		<button id="iterateEffects" class="trigger pt-touch-button">Show next page</button>
 	</div>
 
 	<div id="pt-main" class="pt-perspective">
@@ -24,14 +24,8 @@
 			<h1><span>The Raven</h1>
 		</div>
 		<div class="pt-page pt-page-2">
-			 <div class="flashlight">
-			     <div class="top"></div>
-			     <div class="left"></div>
-			     <div class="center"></div>
-			     <div class="right"></div>
-			     <div class="bottom"></div>
-			 </div>
-			 <div class="sheet"></div>
+			 <div data-next="6" data-top="100" id="t1" class="sheet trigger"></div>
+			 <div data-next="5" data-top="10"class="sheet2 trigger"></div>
 		</div>
 		<div class="pt-page pt-page-3">
 			 <div class="flashlight">
@@ -51,6 +45,18 @@
 			     <div class="bottom"></div>
 			 </div>
 		</div>
+		<div class="pt-page pt-page-5">
+			 <div class="sheet trigger"></div>
+			 <div class="sheet2 trigger"></div>
+		</div>
+		<div class="pt-page pt-page-6">
+			 <div class="sheet trigger"></div>
+			 <div class="sheet2 trigger"></div>
+		</div>
+		<div class="pt-page pt-page-7">
+			 <div class="sheet trigger"></div>
+			 <div class="sheet2 trigger"></div>
+		</div>
 	</div>
 
   <script src="js/jquery-2.1.1.min.js"></script>
@@ -58,13 +64,20 @@
   <script src="js/jquery.balloon.js"></script> 
   <script src="js/jquery.balloon.js"></script> 
   <script src="js/jquery.dlmenu.js"></script> 
-  <script src="js/pagetransitions.js"></script> 
     
 <script>
+
+$(document).ready(function() {
   var context,
       bufferLoader;
 
+	var topsheet=$(".sheet").data('top');
+	console.log('top:'+topsheet)
+	$(".sheet").css("top",topsheet);
+
   function init() {
+
+
     // Fix up prefixing
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     context = new AudioContext();
@@ -97,13 +110,15 @@
     }, 5000);
   }
 
+//  $(".sheet").data("nextPage",3)
+//  $(".sheet2").data("nextPage",6)
+
   $(".sheet").click(init);
   $(".sheet").balloon({
-  contents: '<a href="#">The Book!</a>'
+  contents: '<div class="trigger" >The Book!</div>'
    });
 
-</script>
- <script>
+   //lights!
    var fLight = $(".flashlight .center"),
        fLightTop = $(".flashlight .top"),
        fLightLeft = $(".flashlight .left"),
@@ -133,6 +148,11 @@
             left: (e.pageX + fLightHalfWidht)
         });
     });
+
+});
  </script>
+
+  <script src="js/pagetransitions.js"></script> 
+
 </body>
 </html>

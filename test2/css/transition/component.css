@@ -1,4 +1,5 @@
-html, body { height: 100%; }
+html, body { height: 100%; 
+}
 
 .pt-perspective {
 	position: relative;
@@ -94,10 +95,12 @@ html, body { height: 100%; }
 
 .pt-page-5 {
 	background: #fd6a62;
+  background-image: url('../../images/tao1.jpg');
 }
 
 .pt-page-6 {
 	background: #f68dbb;
+  background-image: url('../../images/tao2.png');
 }
 
 /* Triggers (menu and button) */
