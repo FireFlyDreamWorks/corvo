@@ -21,11 +21,23 @@ var PageTransitions = (function() {
 		support = Modernizr.cssanimations;
 	
 	function init() {
+      console.log('init start');
 
 		$pages.each( function() {
 			var $page = $( this );
+         console.log('page :'+$page.attr('name'));
 			$page.data( 'originalClassList', $page.attr( 'class' ) );
-			console.log($page.attr( 'class' ) );
+         var $spots = $page.children('div.pt-spot');
+         $spots.each( function() {
+   			var $spot = $( this );
+            console.log('spot :'+$spot.attr('name'));
+            var spotname="#"+$spot.attr('name');
+            var topspot=$spot.data('top');
+            $spot.css("top",topspot);
+            var leftspot=$spot.data('left');
+            $spot.css("left",leftspot);
+
+            } );
 		} );
 
 		$pages.eq( current ).addClass( 'pt-page-current' );
@@ -35,7 +47,7 @@ var PageTransitions = (function() {
 			if( isAnimating ) {
 				return false;
 			}
-			if( animcursor > 67 ) {
+			if( animcursor > 6 ) {
 				animcursor = 1;
 			}
 			var options=new Object();
@@ -69,6 +81,7 @@ var PageTransitions = (function() {
 			}
 		}
 		else{
+         console.log('pagesCount:'+pagesCount);
 			if( current < pagesCount - 1 ) {
 				++current;
 			}

@@ -37,8 +37,8 @@ pointer-events: none;
     opacity: 0.9;
 }
 
-.sheet {
-  background-image: url('../images/book.png');
+.spot {
+  background-image: url('../images/spot.png');
   background-size: cover;
     position: absolute;
     left: 840px;
@@ -48,8 +48,8 @@ pointer-events: none;
     z-index: 10;
 }
 
-.sheet2 {
-  background-image: url('../images/book.png');
+.spot2 {
+  background-image: url('../images/spot2.png');
   background-size: cover;
     position: absolute;
     left: 140px;
@@ -57,4 +57,10 @@ pointer-events: none;
   width: 134px;
   height: 70px;
     z-index: 10;
+}
+
+.pt-text {
+   background-color:#000;
+   opacity: 0.5;
+   color:#bbb;
 }

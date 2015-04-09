@@ -15,28 +15,39 @@
 </head>
 <body>
 
+
+   <!--
 	<div class="pt-triggers">
 		<button id="iterateEffects" class="trigger pt-touch-button">Show next page</button>
 	</div>
+   -->
 
 	<div id="pt-main" class="pt-perspective">
-		<div class="pt-page pt-page-1">
-			<h1><span>The Raven</h1>
+		<div name="alfa" class="pt-page pt-page-1">
+			<h1><span>The Raven</span></h1>
+	      <div class="pt-text">
+		      Page 1: Comincia l'avventura
+	      </div>
+		   <div data-next="2" name="A" data-top="50%" data-left="50%" id="t1" class="pt-spot spot trigger">START</div>
 		</div>
 		<div class="pt-page pt-page-2">
-			 <div data-next="6" data-top="100" id="t1" class="sheet trigger"></div>
-			 <div data-next="5" data-top="10"class="sheet2 trigger"></div>
+	      <div class="pt-text">
+		      Page 2: In questo studio c'e' un passaggio segreto verso nuove stanze.
+	      </div>
+         <div> <img src="images/poe.png" /> </div>
+		   <div data-next="6" name="A" data-top="50%" data-left="50%" id="t1" class="pt-spot spot trigger book">6</div>
+			<div data-next="5" name="B" data-top="100" data-left="100" id="t2" class="pt-spot spot2 trigger">5</div>
+			<div data-next="4" name="C" data-top="200" data-left="200" id="t4" class="pt-spot spot2 trigger">4</div>
 		</div>
 		<div class="pt-page pt-page-3">
-			 <div class="flashlight">
-			     <div class="top"></div>
-			     <div class="left"></div>
-			     <div class="center"></div>
-			     <div class="right"></div>
-			     <div class="bottom"></div>
-			 </div>
+	      <div class="pt-text">
+		      Page 3
+	      </div>
 		</div>
 		<div class="pt-page pt-page-4">
+	      <div class="pt-text">
+		      Page 4
+	      </div>
 			 <div class="flashlight">
 			     <div class="top"></div>
 			     <div class="left"></div>
@@ -46,16 +57,25 @@
 			 </div>
 		</div>
 		<div class="pt-page pt-page-5">
-			 <div class="sheet trigger"></div>
-			 <div class="sheet2 trigger"></div>
+	      <div class="pt-text">
+		      Page 5
+	      </div>
+			 <div data-next="2" name="A" class="spot sheet trigger">X</div>
+			 <div data-next="2" name="B" class="spot spot2 trigger">Y</div>
 		</div>
 		<div class="pt-page pt-page-6">
-			 <div class="sheet trigger"></div>
-			 <div class="sheet2 trigger"></div>
+	      <div class="pt-text">
+		      Page 6
+	      </div>
+			 <div data-next="2" class="sheet trigger">Z1</div>
+			 <div data-next="3" class="spot2 trigger">Z2</div>
 		</div>
 		<div class="pt-page pt-page-7">
-			 <div class="sheet trigger"></div>
-			 <div class="sheet2 trigger"></div>
+	      <div class="pt-text">
+		      Page 7
+	      </div>
+			 <div class="sheet trigger">F1</div>
+			 <div class="spot2 trigger">F2</div>
 		</div>
 	</div>
 
@@ -64,94 +84,7 @@
   <script src="js/jquery.balloon.js"></script> 
   <script src="js/jquery.balloon.js"></script> 
   <script src="js/jquery.dlmenu.js"></script> 
-    
-<script>
-
-$(document).ready(function() {
-  var context,
-      bufferLoader;
-
-	var topsheet=$(".sheet").data('top');
-	console.log('top:'+topsheet)
-	$(".sheet").css("top",topsheet);
-
-  function init() {
-
-
-    // Fix up prefixing
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    context = new AudioContext();
-
-    bufferLoader = new BufferLoader(
-        context,
-        [
-        'music/voice01.ogg',
-        'music/Poe_take01.ogg'
-        ],
-        finishedLoading
-        );
-
-    bufferLoader.load();
-  }
-
-  function finishedLoading(bufferList) {
-    // Create two sources and play them both together.
-    var source1 = context.createBufferSource();
-    var source2 = context.createBufferSource();
-    source1.buffer = bufferList[0];
-    source2.buffer = bufferList[1];
-
-    source1.connect(context.destination);
-    source2.connect(context.destination);
-    source2.start(0);
-
-    window.setTimeout(function () {
-        source1.start(0);
-    }, 5000);
-  }
-
-//  $(".sheet").data("nextPage",3)
-//  $(".sheet2").data("nextPage",6)
-
-  $(".sheet").click(init);
-  $(".sheet").balloon({
-  contents: '<div class="trigger" >The Book!</div>'
-   });
-
-   //lights!
-   var fLight = $(".flashlight .center"),
-       fLightTop = $(".flashlight .top"),
-       fLightLeft = $(".flashlight .left"),
-       fLightRight = $(".flashlight .right"),
-       fLightBottom = $(".flashlight .bottom"),
-       fLightHalfHeight = fLight.height() / 2,
-       fLightHalfWidht = fLight.width() / 2;
-    $(document).mousemove(function(e){
-      fLight.css({
-        top: (e.pageY - fLightHalfHeight) + "px",
-        left: (e.pageX - fLightHalfWidht) + "px"
-      });
-        fLightTop.css({
-            top: (e.pageY - fLightTop.height() - fLightHalfHeight),
-            left: (e.pageX - fLightTop.width() / 2)
-        });
-        fLightLeft.css({
-            top: (e.pageY - fLightLeft.height() / 2),
-            left: (e.pageX - fLightLeft.width() - fLightHalfWidht)
-        });
-        fLightBottom.css({
-            top: (e.pageY + fLightHalfHeight),
-            left: (e.pageX - fLightBottom.width() / 2)
-        });
-        fLightRight.css({
-            top: (e.pageY - fLightLeft.height() / 2),
-            left: (e.pageX + fLightHalfWidht)
-        });
-    });
-
-});
- </script>
-
+  <script src="js/raven.js"></script> 
   <script src="js/pagetransitions.js"></script> 
 
 </body>
